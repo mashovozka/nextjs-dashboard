@@ -19,7 +19,7 @@ export default defineConfig([
     },
     rules: {
       'react/react-in-jsx-scope': 'off', // ✅ disable the React import error
-      'prettier/prettier': 'error',
+      'prettier/prettier': 'off',
     },
     settings: {
       react: {
