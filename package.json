@@ -38,6 +38,14 @@
     "onlyBuiltDependencies": [
       "bcrypt",
       "sharp"
-    ]
+    ],
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "next"
+      ],
+      "allowAny": [
+        "next"
+      ]
+    }
   }
 }
