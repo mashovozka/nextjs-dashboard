@@ -1,25 +1,24 @@
 // eslint.config.mts
 import js from '@eslint/js';
 import pluginReact from 'eslint-plugin-react';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 import globals from 'globals';
-import prettierPlugin from 'eslint-plugin-prettier';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
   js.configs.recommended,
   pluginReact.configs.flat.recommended,
+  tsPlugin.configs.flat.recommended,
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{ts,tsx,js,jsx}'],
     languageOptions: {
+      parser: tsParser,
       globals: globals.browser,
     },
-    plugins: {
-      react: pluginReact,
-      prettier: prettierPlugin,
-    },
     rules: {
-      'react/react-in-jsx-scope': 'off', // ✅ disable the React import error
-      'prettier/prettier': 'off',
+      'react/react-in-jsx-scope': 'off', // React 17+ does not require import React
+      'prettier/prettier': 'off', // disable Prettier errors
     },
     settings: {
       react: {
