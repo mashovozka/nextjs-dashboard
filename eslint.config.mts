@@ -1,9 +1,13 @@
+// eslint.config.mts
 import js from '@eslint/js';
 import pluginReact from 'eslint-plugin-react';
 import globals from 'globals';
+import prettierPlugin from 'eslint-plugin-prettier';
 import { defineConfig } from 'eslint/config';
 
 export default defineConfig([
+  js.configs.recommended,
+  pluginReact.configs.flat.recommended,
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
@@ -11,16 +15,16 @@ export default defineConfig([
     },
     plugins: {
       react: pluginReact,
+      prettier: prettierPlugin,
     },
     rules: {
-      'react/react-in-jsx-scope': 'off', // 👈 turn off the error
+      'react/react-in-jsx-scope': 'off', // ✅ disable the React import error
+      'prettier/prettier': 'error',
     },
     settings: {
       react: {
-        version: 'detect', // auto-detect installed React version
+        version: 'detect',
       },
     },
   },
-  js.configs.recommended,
-  pluginReact.configs.flat.recommended,
 ]);
